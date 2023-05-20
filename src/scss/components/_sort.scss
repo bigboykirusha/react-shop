@@ -5,6 +5,7 @@
   &__label {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 
     svg {
       margin-right: 8px;
@@ -12,6 +13,7 @@
 
     b {
       margin-right: 8px;
+      white-space: nowrap;
     }
 
     span {
@@ -26,7 +28,6 @@
     right: 0;
     margin-top: 15px;
     background: #ffffff;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
     border-radius: 10px;
     overflow: hidden;
     padding: 10px 0;
@@ -49,5 +50,9 @@
         }
       }
     }
+  }
+
+  &__popup {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
   }
 }

@@ -11,7 +11,6 @@ const Header = () => {
             <img width="38" src={logoSvg} alt="Pizza logo" />
             <div>
               <h1>React Pizza</h1>
-              <p>1000-7</p>
             </div>
           </div>
         </Link>

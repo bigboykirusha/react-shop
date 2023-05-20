@@ -10,20 +10,19 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    return () => {
-      axios
-        .get("https://645590daa74f994b335ca976.mockapi.io/items")
-        .then((response) => {
-          setTimeout(() => {
-            setIsLoading(false);
-            setItems(response.data);
-          }, 1000);
-        });
-    };
+    axios
+      .get("https://645590daa74f994b335ca976.mockapi.io/items")
+      .then((response) => {
+        setTimeout(() => {
+          setIsLoading(false);
+          setItems(response.data);
+        }, 1000);
+      });
+    window.scrollTo(0, 0);
   }, []);
 
   return (
-    <>
+    <div className={"container"}>
       <div className="content__top">
         <Categories />
         <Sort />
@@ -34,7 +33,7 @@ const Home = () => {
           ? [...new Array(6)].map((_, i) => <Placeholder key={i} />)
           : items.map((obj) => <PizzaBlock key={obj.id} {...obj} />)}
       </div>
-    </>
+    </div>
   );
 };
 

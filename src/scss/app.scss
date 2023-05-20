@@ -15,25 +15,62 @@ body {
   margin: 50px auto;
   border-radius: 10px;
   max-width: 1400px;
+  @media (max-width: 480px) {
+    width: calc(100vw - 40px);
+    margin: 20px auto;
+  }
 }
 
 .content {
   padding: 40px 0;
+  @media (max-width: 731px) {
+    padding-top: 10px;
+  }
 
   &__title {
-    margin: 35px 0;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    font-size: 38px;
+    font-weight: bold;
+    @media (max-width: 731px) {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 30px;
+    }
   }
 
   &__items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+
+    @media (max-width: 1400px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 1060px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 731px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 
   &__top {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 1290px) {
+      flex-direction: column;
+      row-gap: 15px;
+      ul {
+        justify-content: center;
+        row-gap: 10px;
+      }
+    }
   }
 }
 
@@ -46,6 +83,7 @@ body {
     margin: 90px auto;
     .content__title {
       margin: 0;
+
     }
   }
 }
@@ -56,11 +94,14 @@ body {
     justify-content: space-between;
     align-items: center;
   }
-
+  .content__items {
+    display: block;
+  }
   .content__title {
     display: flex;
     align-items: center;
     font-size: 32px;
+
 
     svg {
       position: relative;
@@ -105,6 +146,7 @@ body {
       }
     }
   }
+
 
   &__item {
     display: flex;
@@ -243,7 +285,6 @@ body {
         span {
           color: darken($color: $gray-line, $amount: 20);
           font-weight: 500;
-          font-weight: 600;
         }
 
         &:hover {
@@ -290,7 +331,7 @@ body {
       color: #777777;
     }
 
-    icon {
+    .icon {
       position: relative;
       top: 2px;
     }
