@@ -8,24 +8,39 @@ import axios from "axios";
 const Home = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [categoryId, setCategoryId] = useState(0);
+  const [sortType, setSortType] = useState({
+    name: "популярности",
+    sortProp: "rating",
+  });
 
   useEffect(() => {
+    setIsLoading(true);
     axios
-      .get("https://645590daa74f994b335ca976.mockapi.io/items")
+      .get(
+        `https://645590daa74f994b335ca976.mockapi.io/items?${
+          categoryId > 0 ? `category=${categoryId}` : ""
+        }&sortBy=${sortType.sortProp.replace("-", "")}&order=${
+          sortType.sortProp.includes("-") ? "asc" : "desc"
+        }`
+      )
       .then((response) => {
         setTimeout(() => {
           setIsLoading(false);
           setItems(response.data);
-        }, 1000);
+        }, 200);
       });
     window.scrollTo(0, 0);
-  }, []);
+  }, [categoryId, sortType.sortProp]);
 
   return (
     <div className={"container"}>
       <div className="content__top">
-        <Categories />
-        <Sort />
+        <Categories
+          categoryId={categoryId}
+          onClickCategory={(i) => setCategoryId(i)}
+        />
+        <Sort sortType={sortType} setSortType={(i) => setSortType(i)} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
