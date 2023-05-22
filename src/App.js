@@ -9,7 +9,6 @@ import { createContext, useState } from "react";
 export const SearchContext = createContext("");
 function App() {
   const [searchValue, setSearchValue] = useState("");
-
   return (
     <div className="App">
       <div className="wrapper">

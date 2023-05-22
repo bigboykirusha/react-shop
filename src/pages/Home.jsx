@@ -6,18 +6,17 @@ import PizzaBlock from "../components/PizzaBlock";
 import axios from "axios";
 import Pagination from "../components/Pagination";
 import { SearchContext } from "../App";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+  // Redux logic
+  const { categoryId, sortType } = useSelector((state) => state.filter);
+
   const { searchValue } = useContext(SearchContext);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [categoryId, setCategoryId] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const pizzas = items.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
-  const [sortType, setSortType] = useState({
-    name: "популярности",
-    sortProp: "rating",
-  });
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,7 +32,7 @@ const Home = () => {
         setTimeout(() => {
           setIsLoading(false);
           setItems(response.data);
-        }, 200);
+        }, 300);
       });
     window.scrollTo(0, 0);
   }, [categoryId, sortType.sortProp, searchValue, currentPage]);
@@ -41,11 +40,8 @@ const Home = () => {
   return (
     <div className={"container"}>
       <div className="content__top">
-        <Categories
-          categoryId={categoryId}
-          onClickCategory={(i) => setCategoryId(i)}
-        />
-        <Sort sortType={sortType} setSortType={(i) => setSortType(i)} />
+        <Categories />
+        <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
