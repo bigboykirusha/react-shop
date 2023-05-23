@@ -61,7 +61,7 @@ const Home = () => {
       );
       isSearch.current = true;
     }
-  }, [categoryId, sortType.sortProp, searchValue, currentPage]);
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
