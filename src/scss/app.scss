@@ -27,6 +27,19 @@ body {
     padding-top: 10px;
   }
 
+  &__error {
+    margin: 100px auto;
+    width: 500px;
+    text-align: center;
+    h2 {
+      font-size: 32px;
+      font-weight: bold;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+
   &__title {
     margin-top: 40px;
     margin-bottom: 50px;
@@ -323,7 +336,7 @@ body {
     h2 {
       font-size: 36px;
       font-weight: bold;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     p {

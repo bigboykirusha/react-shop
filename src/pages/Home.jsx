@@ -1,21 +1,25 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Categories from "../components/Categories";
 import Sort, { LIST } from "../components/Sort";
 import Placeholder from "../components/Placeholder";
 import PizzaBlock from "../components/PizzaBlock";
-import axios from "axios";
 import Pagination from "../components/Pagination";
-import { SearchContext } from "../App";
 import qs from "qs";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentPage, setFilters } from "../redux/slices/filterSlice";
+import {
+  selectFilter,
+  setCurrentPage,
+  setFilters,
+} from "../redux/slices/filterSlice";
 import { useNavigate } from "react-router-dom";
+import { fetchSushi, selectSushiData } from "../redux/slices/sushiSlice";
+import styles from "../components/NotFoundBlock/NotFoundBlock.module.scss";
 
 const Home = () => {
   // Redux logic
-  const { categoryId, sortType, currentPage } = useSelector(
-    (state) => state.filter
-  );
+  const { categoryId, sortType, currentPage, searchValue } =
+    useSelector(selectFilter);
+  const { items, status } = useSelector(selectSushiData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isSearch = useRef(false);
@@ -24,28 +28,25 @@ const Home = () => {
     dispatch(setCurrentPage(num));
   };
 
-  const fetchItems = () => {
-    setIsLoading(true);
-
+  const getSushi = async () => {
     const sortBy = sortType.sortProp.replace("-", "");
     const order = sortType.sortProp.includes("-") ? "asc" : "desc";
     const category = categoryId > 0 ? `category=${categoryId}` : "";
     const search = searchValue ? `search=${searchValue}` : "";
-    axios
-      .get(
-        `https://645590daa74f994b335ca976.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}&${search}`
-      )
-      .then((response) => {
-        setTimeout(() => {
-          setIsLoading(false);
-          setItems(response.data);
-        }, 300);
-      });
+
+    dispatch(
+      fetchSushi({
+        sortBy,
+        order,
+        category,
+        search,
+        currentPage,
+      })
+    );
+
+    window.scrollTo(0, 0);
   };
 
-  const { searchValue } = useContext(SearchContext);
-  const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const pizzas = items.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
   /* eslint-disable */
   useEffect(() => {
@@ -64,10 +65,8 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     if (!isSearch.current) {
-      fetchItems();
+      getSushi();
     }
     isSearch.current = false;
   }, [categoryId, sortType.sortProp, searchValue, currentPage]);
@@ -94,11 +93,19 @@ const Home = () => {
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
-      <div className="content__items">
-        {isLoading
-          ? [...new Array(4)].map((_, i) => <Placeholder key={i} />)
-          : pizzas}
-      </div>
+      {status === "error" ? (
+        <div className="content__error">
+          <h2>Здесь пусто 🙂</h2>
+          <p className={styles.description}>К сожалению, нет данных :(</p>
+        </div>
+      ) : (
+        <div className="content__items">
+          {status === "loading"
+            ? [...new Array(4)].map((_, i) => <Placeholder key={i} />)
+            : pizzas}
+        </div>
+      )}
+
       <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </div>
   );
