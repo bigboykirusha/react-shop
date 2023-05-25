@@ -87,7 +87,7 @@ const Home = () => {
   /* eslint-enable */
 
   return (
-    <div className={"container"}>
+    <div className="container">
       <div className="content__top">
         <Categories />
         <Sort />

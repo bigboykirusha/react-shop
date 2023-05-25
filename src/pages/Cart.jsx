@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../components/CartItem";
 import { clearItems, selectCart } from "../redux/slices/cartSlice";
 import CartEmpty from "../components/CartEmpty";
+import { setSearchValue } from "../redux/slices/filterSlice";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -113,6 +114,7 @@ const Cart = () => {
           </div>
           <div className="cart__bottom-buttons">
             <Link
+              onClick={() => dispatch(setSearchValue(""))}
               className="button button--outline button--add go-back-btn"
               to={"/"}
             >
