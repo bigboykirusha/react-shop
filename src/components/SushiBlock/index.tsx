@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, selectCartItemById } from "../../redux/slices/cartSlice";
+import {
+  addItem,
+  CartItem,
+  selectCartItemById,
+} from "../../redux/slices/cartSlice";
 
 const typeNames = ["Тонкое", "Традиционное"];
 const sizeValues = ["26", "30", "40"];
@@ -28,13 +32,14 @@ const SushiBlock: React.FC<SushiBlockProps> = ({
   const cartItem = useSelector(selectCartItemById(id));
   const addedCount = cartItem ? cartItem.count : 0;
   const onClickAdd = () => {
-    const item = {
+    const item: CartItem = {
       id,
       title,
       price,
       imageUrl,
       type: typeNames[activeType],
       size: sizeValues[activeSize],
+      count: 0,
     };
     dispatch(addItem(item));
   };

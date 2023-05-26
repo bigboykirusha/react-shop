@@ -1,26 +1,31 @@
 import React, { useEffect, useRef } from "react";
 import Categories from "../components/Categories";
-import Sort, { LIST } from "../components/Sort";
+import SortPopup, { LIST } from "../components/SortPopup";
 import Placeholder from "../components/Placeholder";
 import SushiBlock from "../components/SushiBlock";
 import Pagination from "../components/Pagination";
 import qs from "qs";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   selectFilter,
   setCurrentPage,
   setFilters,
 } from "../redux/slices/filterSlice";
 import { useNavigate } from "react-router-dom";
-import { fetchSushi, selectSushiData } from "../redux/slices/sushiSlice";
+import {
+  fetchSushi,
+  SearchSushiParams,
+  selectSushiData,
+} from "../redux/slices/sushiSlice";
 import styles from "../components/NotFoundBlock/NotFoundBlock.module.scss";
+import { useAppDispatch } from "../redux/store";
 
 const Home: React.FC = () => {
   // Redux logic
   const { categoryId, sortType, currentPage, searchValue } =
     useSelector(selectFilter);
   const { items, status } = useSelector(selectSushiData);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isSearch = useRef(false);
   const isMounted = useRef(false);
@@ -31,17 +36,18 @@ const Home: React.FC = () => {
   const getSushi = async () => {
     const sortBy = sortType.sortProp.replace("-", "");
     const order = sortType.sortProp.includes("-") ? "asc" : "desc";
-    const category = categoryId > 0 ? `category=${categoryId}` : "";
+    console.log(categoryId);
+    const category = categoryId > 0 ? String(categoryId) : "";
+    console.log(category);
     const search = searchValue ? `search=${searchValue}` : "";
 
     dispatch(
-      //@ts-ignore
       fetchSushi({
         sortBy,
         order,
         category,
         search,
-        currentPage,
+        currentPage: String(currentPage),
       })
     );
 
@@ -52,13 +58,18 @@ const Home: React.FC = () => {
   /* eslint-disable */
   useEffect(() => {
     if (window.location.search) {
-      const Params = qs.parse(window.location.search.substring(1));
-      const sortType = LIST.find((obj) => obj.sortProp === Params.sortProp);
-
+      const params = qs.parse(
+        window.location.search.substring(1)
+      ) as unknown as SearchSushiParams;
+      console.log(params);
+      const sortObj = LIST.find((obj) => obj.sortProp === params.sortProp);
+      console.log(categoryId);
       dispatch(
         setFilters({
-          ...Params,
-          sortType,
+          searchValue: params.search,
+          categoryId: Number(params.categoryId),
+          currentPage: Number(params.currentPage),
+          sortType: sortObj || LIST[0],
         })
       );
       isSearch.current = true;
@@ -91,7 +102,7 @@ const Home: React.FC = () => {
     <div className="container">
       <div className="content__top">
         <Categories />
-        <Sort />
+        <SortPopup />
       </div>
       <h2 className="content__title">Все роллы</h2>
       {status === "error" ? (

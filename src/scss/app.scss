@@ -209,6 +209,21 @@ body {
       width: 13%;
 
       &-minus {
+        &-disabled {
+          opacity: 0.4;
+          border-color: #787878;
+          &:hover {
+            background: transparent;
+            border-color: #787878;
+            svg path {
+              fill: #787878;
+            }
+          }
+          svg path {
+            fill: #787878;
+          }
+
+        }
         svg {
           path:first-of-type {
             display: none;
