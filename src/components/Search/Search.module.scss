@@ -1,7 +1,15 @@
 .root {
   position: relative;
   margin-right: auto;
-  margin-left: 220px;
+  margin-left: auto;
+  @media (max-width: 870px) {
+    order: 3;
+  }
+  @media (max-width: 550px) {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
 }
 
 .input {
@@ -14,6 +22,14 @@
   &:focus {
     border: 1px solid rgba(0, 0, 0 , 0.2);
   }
+  @media (max-width: 1000px) {
+    width: 300px;
+  }
+  @media (max-width: 550px) {
+    width: 100%;
+
+  }
+
 }
 
 .icon {

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Categories from "../components/Categories";
 import Sort, { LIST } from "../components/Sort";
 import Placeholder from "../components/Placeholder";
-import PizzaBlock from "../components/PizzaBlock";
+import SushiBlock from "../components/SushiBlock";
 import Pagination from "../components/Pagination";
 import qs from "qs";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchSushi, selectSushiData } from "../redux/slices/sushiSlice";
 import styles from "../components/NotFoundBlock/NotFoundBlock.module.scss";
 
-const Home = () => {
+const Home: React.FC = () => {
   // Redux logic
   const { categoryId, sortType, currentPage, searchValue } =
     useSelector(selectFilter);
@@ -24,8 +24,8 @@ const Home = () => {
   const navigate = useNavigate();
   const isSearch = useRef(false);
   const isMounted = useRef(false);
-  const onChangePage = (num) => {
-    dispatch(setCurrentPage(num));
+  const onChangePage = (idx: number) => {
+    dispatch(setCurrentPage(idx));
   };
 
   const getSushi = async () => {
@@ -35,6 +35,7 @@ const Home = () => {
     const search = searchValue ? `search=${searchValue}` : "";
 
     dispatch(
+      //@ts-ignore
       fetchSushi({
         sortBy,
         order,
@@ -47,7 +48,7 @@ const Home = () => {
     window.scrollTo(0, 0);
   };
 
-  const pizzas = items.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
+  const pizzas = items.map((obj: any) => <SushiBlock key={obj.id} {...obj} />);
   /* eslint-disable */
   useEffect(() => {
     if (window.location.search) {
@@ -92,7 +93,7 @@ const Home = () => {
         <Categories />
         <Sort />
       </div>
-      <h2 className="content__title">Все пиццы</h2>
+      <h2 className="content__title">Все роллы</h2>
       {status === "error" ? (
         <div className="content__error">
           <h2>Здесь пусто 🙂</h2>

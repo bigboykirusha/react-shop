@@ -1,7 +1,7 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
 
-const Placeholder = (props) => (
+const Placeholder: React.FC = () => (
   <ContentLoader
     className={"pizza-block"}
     speed={2}
@@ -10,7 +10,6 @@ const Placeholder = (props) => (
     viewBox="0 0 280 460"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
-    {...props}
   >
     <rect x="10" y="10" rx="10" ry="10" width="260" height="260" />
     <rect x="0" y="292" rx="10" ry="10" width="280" height="22" />

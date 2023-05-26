@@ -1,5 +1,5 @@
 import React from "react";
-import logoSvg from "../../assets/img/pizza-logo.svg";
+import logoSvg from "../../assets/img/sushi-logo.svg";
 import { Link, useLocation } from "react-router-dom";
 import Search from "../Search";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +8,10 @@ import { setSearchValue } from "../../redux/slices/filterSlice";
 
 const Header = () => {
   const { items, totalPrice } = useSelector(selectCart);
-  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+  const totalCount = items.reduce(
+    (sum: number, item: any) => sum + item.count,
+    0
+  );
   const location = useLocation();
   const dispatch = useDispatch();
 
@@ -17,9 +20,9 @@ const Header = () => {
       <div className="container">
         <Link onClick={() => dispatch(setSearchValue(""))} to="/">
           <div className="header__logo">
-            <img width="38" src={logoSvg} alt="Pizza logo" />
+            <img width="38" src={logoSvg} alt="Sushi logo" />
             <div>
-              <h1>React Pizza</h1>
+              <h1>React Sushi</h1>
             </div>
           </div>
         </Link>

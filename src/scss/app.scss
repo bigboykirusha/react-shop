@@ -102,6 +102,9 @@ body {
 }
 
 .cart {
+  @media (max-width: 870px) {
+    order: 2;
+  }
   &__top {
     display: flex;
     justify-content: space-between;

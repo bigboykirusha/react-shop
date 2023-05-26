@@ -3,11 +3,23 @@
 .header {
   border-bottom: 1px solid $gray-line;
   padding: 40px 0;
+  @media (max-width: 870px) {
+    padding: 20px 0;
+  }
 
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 870px) {
+      flex-wrap: wrap;
+      column-gap: 20px;
+      row-gap: 30px;
+    }
+    @media (max-width: 550px) {
+      column-gap: 10px;
+      row-gap: 20px;
+    }
   }
 
   &__logo {
