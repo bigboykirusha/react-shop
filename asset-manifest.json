@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-shop/static/css/main.9d99c39d.css",
-    "main.js": "/react-shop/static/js/main.ee5a18f2.js",
+    "main.js": "/react-shop/static/js/main.99437b4d.js",
     "static/media/empty-cart.png": "/react-shop/static/media/empty-cart.db905d1f4b063162f25b.png",
     "static/media/sushi-logo.svg": "/react-shop/static/media/sushi-logo.e8c37875154491666f5360c02c64020a.svg",
     "index.html": "/react-shop/index.html",
     "main.9d99c39d.css.map": "/react-shop/static/css/main.9d99c39d.css.map",
-    "main.ee5a18f2.js.map": "/react-shop/static/js/main.ee5a18f2.js.map"
+    "main.99437b4d.js.map": "/react-shop/static/js/main.99437b4d.js.map"
   },
   "entrypoints": [
     "static/css/main.9d99c39d.css",
-    "static/js/main.ee5a18f2.js"
+    "static/js/main.99437b4d.js"
   ]
 }
