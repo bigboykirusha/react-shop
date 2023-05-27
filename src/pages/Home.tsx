@@ -6,19 +6,14 @@ import SushiBlock from "../components/SushiBlock";
 import Pagination from "../components/Pagination";
 import qs from "qs";
 import { useSelector } from "react-redux";
-import {
-  selectFilter,
-  setCurrentPage,
-  setFilters,
-} from "../redux/slices/filterSlice";
 import { useNavigate } from "react-router-dom";
-import {
-  fetchSushi,
-  SearchSushiParams,
-  selectSushiData,
-} from "../redux/slices/sushiSlice";
 import styles from "../components/NotFoundBlock/NotFoundBlock.module.scss";
 import { useAppDispatch } from "../redux/store";
+import { selectFilter } from "../redux/Filter/selectors";
+import { selectSushiData } from "../redux/Sushi/selectors";
+import { setCurrentPage, setFilters } from "../redux/Filter/slice";
+import { fetchSushi } from "../redux/Sushi/asyncActions";
+import { SearchSushiParams } from "../redux/Sushi/types";
 
 const Home: React.FC = () => {
   // Redux logic
@@ -39,7 +34,7 @@ const Home: React.FC = () => {
     console.log(categoryId);
     const category = categoryId > 0 ? String(categoryId) : "";
     console.log(category);
-    const search = searchValue ? `search=${searchValue}` : "";
+    const search = searchValue ? searchValue : "";
 
     dispatch(
       fetchSushi({
@@ -66,7 +61,7 @@ const Home: React.FC = () => {
       console.log(categoryId);
       dispatch(
         setFilters({
-          searchValue: params.search,
+          searchValue: params.searchValue,
           categoryId: Number(params.categoryId),
           currentPage: Number(params.currentPage),
           sortType: sortObj || LIST[0],

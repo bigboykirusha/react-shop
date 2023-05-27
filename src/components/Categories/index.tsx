@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCategoryId } from "../../redux/slices/filterSlice";
 import { RootState } from "../../redux/store";
+import { setCategoryId } from "../../redux/Filter/slice";
 
 const Categories: React.FC = () => {
   const CATEGORIES = [
@@ -25,7 +25,7 @@ const Categories: React.FC = () => {
           <li
             key={categoryName}
             onClick={() => onChangeCategory(i)}
-            className={categoryId == i ? "active" : ""}
+            className={categoryId === i ? "active" : ""}
           >
             {categoryName}
           </li>
