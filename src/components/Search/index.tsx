@@ -47,7 +47,7 @@ const Search: React.FC = () => {
         value={value}
         type="text"
         className={styles.input}
-        placeholder={"Поиск пиццы..."}
+        placeholder={"Поиск роллов..."}
       />
       {value && (
         <svg

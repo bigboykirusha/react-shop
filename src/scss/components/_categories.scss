@@ -7,13 +7,23 @@
 
     li {
       background-color: #f9f9f9;
-      padding: 13px 30px;
       border-radius: 30px;
       margin-right: 10px;
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.1s ease-in-out;
       @include noselect();
+
+      button {
+        padding: 13px 30px;
+        border: none;
+        font: inherit;
+        color: inherit;
+        background-color: transparent;
+        /* отображаем курсор в виде руки при наведении; некоторые
+        считают, что необходимо оставлять стрелочный вид для кнопок */
+        cursor: pointer;
+      }
 
       &:hover {
         background-color: darken(#f9f9f9, 2%);

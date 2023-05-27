@@ -97,7 +97,7 @@ const Cart: React.FC = () => {
               ></path>
             </svg>
 
-            <span>Очистить корзину</span>
+            <span>Удалить всё</span>
           </div>
         </div>
         <div className="content__items">

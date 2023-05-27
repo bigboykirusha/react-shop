@@ -6,13 +6,14 @@ import { setCategoryId } from "../../redux/Filter/slice";
 const Categories: React.FC = () => {
   const CATEGORIES = [
     "Все",
-    "Мясные",
-    "Вегетарианская",
-    "Гриль",
+    "Фрайтонамаки",
+    "Поко",
+    "Темпура",
     "Острые",
-    "Закрытые",
+    "Корейские",
   ];
   const categoryId = useSelector((state: RootState) => state.filter.categoryId);
+  const search = useSelector((state: RootState) => state.filter.searchValue);
   console.log("uh", categoryId);
   const dispatch = useDispatch();
   const onChangeCategory = (id: number): void => {
@@ -22,12 +23,13 @@ const Categories: React.FC = () => {
     <div className="categories">
       <ul>
         {CATEGORIES.map((categoryName, i) => (
-          <li
-            key={categoryName}
-            onClick={() => onChangeCategory(i)}
-            className={categoryId === i ? "active" : ""}
-          >
-            {categoryName}
+          <li key={categoryName} className={categoryId === i ? "active" : ""}>
+            <button
+              disabled={search !== ""}
+              onClick={() => onChangeCategory(i)}
+            >
+              {categoryName}
+            </button>
           </li>
         ))}
       </ul>

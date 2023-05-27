@@ -23,6 +23,7 @@ export const filterSlice = createSlice({
     },
     setSearchValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
+      console.log("assa", state.searchValue);
     },
     setCurrentPage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;

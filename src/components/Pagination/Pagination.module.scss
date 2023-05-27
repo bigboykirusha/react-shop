@@ -9,16 +9,16 @@
       display: inline-block;
       text-align: center;
       line-height: 42px;
-      border: 1px solid #fe5f1e;
+      border: 1px solid #6e9c4f;
       border-radius: 30px;
       width: 45px;
       height: 45px;
       margin-right: 10px;
       cursor: pointer;
-      color: #fe5f1e;
+      color: #6e9c4f;
 
       &:hover {
-        background-color: #fe5f1e;
+        background-color: #6e9c4f;
         color: #ffffff;
       }
     }
@@ -27,7 +27,7 @@
   :global {
     .selected {
       a {
-        background-color: #fe5f1e;
+        background-color: #6e9c4f;
         color: #ffffff;
       }
     }

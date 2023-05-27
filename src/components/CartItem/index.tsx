@@ -43,12 +43,12 @@ const CartItem: React.FC<CartItemProps> = ({
   return (
     <div className="cart__item">
       <div className="cart__item-img">
-        <img className="pizza-block__image" src={imageUrl} alt="Sushi" />
+        <img className="sushi-block__image" src={imageUrl} alt="Sushi" />
       </div>
       <div className="cart__item-info">
         <h3>{title}</h3>
         <p>
-          {type}, {size} см.
+          {type}, {size} г.
         </p>
       </div>
       <div className="cart__item-count">

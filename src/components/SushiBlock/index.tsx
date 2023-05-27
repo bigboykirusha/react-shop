@@ -4,8 +4,8 @@ import { selectCartItemById } from "../../redux/Cart/selectors";
 import { addItem } from "../../redux/Cart/slice";
 import { CartItem } from "../../redux/Cart/types";
 
-const typeNames = ["Тонкое", "Традиционное"];
-const sizeValues = ["26", "30", "40"];
+const typeNames = ["Урамаки", "Хосомаки"];
+const sizeValues = ["200", "500", "850"];
 
 type SushiBlockProps = {
   id: number;
@@ -43,11 +43,11 @@ const SushiBlock: React.FC<SushiBlockProps> = ({
   };
 
   return (
-    <div className={"pizza-block-wrapper"}>
-      <div className="pizza-block">
-        <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
-        <h4 className="pizza-block__title">{title}</h4>
-        <div className="pizza-block__selector">
+    <div className={"sushi-block-wrapper"}>
+      <div className="sushi-block">
+        <img className="sushi-block__image" src={imageUrl} alt="Sushi" />
+        <h4 className="sushi-block__title">{title}</h4>
+        <div className="sushi-block__selector">
           <ul>
             {types.map((typeId) => (
               <li
@@ -66,13 +66,13 @@ const SushiBlock: React.FC<SushiBlockProps> = ({
                 onClick={() => setActiveSize(i)}
                 className={activeSize === i ? "active" : ""}
               >
-                {size} cm.
+                {size} г.
               </li>
             ))}
           </ul>
         </div>
-        <div className="pizza-block__bottom">
-          <div className="pizza-block__price">от {price} ₽</div>
+        <div className="sushi-block__bottom">
+          <div className="sushi-block__price">от {price} ₽</div>
           <button
             onClick={onClickAdd}
             className="button button--outline button--add"
