@@ -24,7 +24,7 @@ body {
 .content {
   padding: 40px 0;
   @media (max-width: 731px) {
-    padding-top: 10px;
+    padding-top: 20px;
   }
 
   &__error {
@@ -47,7 +47,8 @@ body {
     font-weight: bold;
     @media (max-width: 731px) {
       text-align: center;
-      margin-bottom: 40px;
+      margin-top: 50px;
+      margin-bottom: 30px;
       font-size: 30px;
     }
   }
@@ -177,6 +178,13 @@ body {
     border-top: 1px solid $gray-line;
     padding-top: 30px;
     margin-top: 30px;
+    column-gap: 10px;
+    @media (max-width: 780px) {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      row-gap: 15px;
+    }
+
 
     &-img {
       display: flex;
@@ -195,6 +203,9 @@ body {
       flex-direction: column;
       justify-content: center;
       width: 40%;
+      @media (max-width: 780px) {
+        margin-right: 100%;
+      }
 
       h3 {
         font-weight: bold;
@@ -240,6 +251,7 @@ body {
 
       b {
         font-size: 22px;
+        margin: 0 10px;
       }
     }
 
@@ -248,6 +260,7 @@ body {
       align-items: center;
       justify-content: center;
       width: 33%;
+      margin: 0 10px;
 
       b {
         font-weight: bold;
@@ -373,11 +386,15 @@ body {
     margin: 80px auto;
     width: 620px;
     text-align: center;
+    @media (max-width: 780px) {
+      width: 80%;
+    }
 
     h2 {
       font-size: 36px;
       font-weight: bold;
       margin-bottom: 20px;
+      line-height: 130%;
     }
 
     p {
@@ -394,7 +411,7 @@ body {
 
     img {
       display: block;
-      width: 300px;
+      width: 280px;
       margin: 45px auto 60px;
     }
 

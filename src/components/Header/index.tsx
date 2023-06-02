@@ -27,7 +27,7 @@ const Header = () => {
   return (
     <div className="header">
       <div className="container">
-        <Link onClick={() => dispatch(setSearchValue(""))} to="/">
+        <Link onClick={() => dispatch(setSearchValue(""))} to="/react-shop/">
           <div className="header__logo">
             <img width="38" src={logoSvg} alt="Sushi logo" />
             <div>

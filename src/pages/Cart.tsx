@@ -120,7 +120,7 @@ const Cart: React.FC = () => {
             <Link
               onClick={() => dispatch(setSearchValue(""))}
               className="button button--outline button--add go-back-btn"
-              to={"/"}
+              to={"/react-shop"}
             >
               <svg
                 width="8"
