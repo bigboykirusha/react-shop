@@ -28,16 +28,50 @@ body {
   }
 
   &__error {
-    margin: 100px auto;
-    width: 500px;
-    text-align: center;
-    h2 {
-      font-size: 32px;
-      font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  align-items: center;
+  margin: 0 auto;
+
+  overflow: hidden;
+  text-align: center;
+  padding: 100px 0;
+  padding-top: 80px;
+
+  @media (max-width: 768px) {
+    padding-top: 60px;
+    width: 90%;
+  }
+  
+   span {
+     font-size: 64px;
+     margin-bottom: 20px;
+
+     @media (max-width: 768px) {
+      font-size: 42px;
+      margin-bottom: 15px;
     }
-    p {
-      font-size: 20px;
+   }
+   .title {
+    color: balck;
+    font-size: 32px;
+
+    @media (max-width: 768px) {
+      font-size: 22px;
     }
+   }
+   .description {
+    padding-top: 20px;
+    font-size: 24px;
+    font-weight: normal;
+    color: black;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+      padding-top: 10px;
+    }
+  }
   }
 
   &__title {
@@ -116,6 +150,12 @@ body {
   }
   .content__items {
     display: block;
+
+    @media (max-width: 780px) {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
   }
   .content__title {
     display: flex;
@@ -181,8 +221,9 @@ body {
     column-gap: 10px;
     @media (max-width: 780px) {
       flex-wrap: wrap;
-      justify-content: space-between;
-      row-gap: 15px;
+      align-items: flex-start;
+      margin-top: 0;
+      row-gap: 10px;
     }
 
 
@@ -191,6 +232,10 @@ body {
       align-items: center;
       margin-right: 15px;
       width: 10%;
+
+      @media (max-width: 780px) {
+        width: auto;
+      }
 
       img {
         width: 80px;
@@ -204,7 +249,8 @@ body {
       justify-content: center;
       width: 40%;
       @media (max-width: 780px) {
-        margin-right: 100%;
+        width: 60%;
+        margin: auto 0;
       }
 
       h3 {
@@ -224,7 +270,11 @@ body {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 13%;
+      width: fit-content;
+
+      @media (max-width: 780px) { 
+        margin-right: auto;
+      }
 
       &-minus {
         &-disabled {
@@ -262,6 +312,11 @@ body {
       width: 33%;
       margin: 0 10px;
 
+      @media (max-width: 780px) {
+        width: auto;
+        margin: 0;
+      }
+
       b {
         font-weight: bold;
         font-size: 22px;
@@ -274,6 +329,10 @@ body {
       align-items: center;
       justify-content: flex-end;
       width: 4%;
+
+      @media (max-width: 780px) {
+        width: auto;
+      }
 
       .button {
         border-color: darken($color: $gray-line, $amount: 10);
@@ -305,6 +364,11 @@ body {
   &__bottom {
     margin: 50px 0;
 
+    @media (max-width: 550px) {
+      margin-bottom: 0;
+      margin-top: 60px;
+  }
+
     &-details {
       display: flex;
       justify-content: space-between;
@@ -317,7 +381,13 @@ body {
         font-size: 22px;
         @media (max-width: 550px) {
           text-align: center;
+
+          b {
+            display: block;
+            width: auto
+          }
         }
+  
 
         &:last-of-type {
           @media (max-width: 550px) {

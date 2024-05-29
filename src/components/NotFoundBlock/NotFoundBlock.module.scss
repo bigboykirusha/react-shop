@@ -1,14 +1,45 @@
 .root {
-  padding: 100px;
-  text-align: center;
-  width: 750px;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  align-items: center;
   margin: 0 auto;
-  span {
-    font-size: 64px;
+  height: 100%; /* Рассчитываем высоту контейнера с учетом высоты шапки */
+  overflow: hidden;
+  text-align: center;
+  padding: 100px 0;
+
+  @media (max-width: 768px) {
+    padding-top: 60px;
+    width: 90%;
   }
-}
-.description {
-  padding-top: 20px;
-  font-size: 24px;
-  font-weight: normal;
-}
+  
+   span {
+     font-size: 64px;
+     margin-bottom: 20px;
+
+     @media (max-width: 768px) {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+   }
+   .title {
+    color: balck;
+    font-size: 32px;
+
+    @media (max-width: 768px) {
+      font-size: 22px;
+    }
+   }
+   .description {
+    padding-top: 20px;
+    font-size: 24px;
+    font-weight: normal;
+    color: black;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+      padding-top: 10px;
+    }
+  }
+ }

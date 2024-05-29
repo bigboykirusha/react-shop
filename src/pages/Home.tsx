@@ -102,7 +102,7 @@ const Home: React.FC = () => {
       <h2 className="content__title">Все роллы</h2>
       {status === "error" ? (
         <div className="content__error">
-          <h2>Здесь пусто 🙂</h2>
+          <h2 className={styles.title}>Здесь пусто 🙂</h2>
           <p className={styles.description}>К сожалению, нет данных :(</p>
         </div>
       ) : (
