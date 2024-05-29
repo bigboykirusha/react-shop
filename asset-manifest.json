@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/react-shop/static/css/main.4b66f3a8.css",
-    "main.js": "/react-shop/static/js/main.7dc54ab4.js",
-    "static/js/209.ea889622.chunk.js": "/react-shop/static/js/209.ea889622.chunk.js",
+    "main.css": "/react-shop/static/css/main.98775ada.css",
+    "main.js": "/react-shop/static/js/main.522f80d9.js",
+    "static/js/209.1522a294.chunk.js": "/react-shop/static/js/209.1522a294.chunk.js",
     "static/media/empty-cart.png": "/react-shop/static/media/empty-cart.db905d1f4b063162f25b.png",
     "static/media/sushi-logo.svg": "/react-shop/static/media/sushi-logo.e8c37875154491666f5360c02c64020a.svg",
     "index.html": "/react-shop/index.html",
-    "main.4b66f3a8.css.map": "/react-shop/static/css/main.4b66f3a8.css.map",
-    "main.7dc54ab4.js.map": "/react-shop/static/js/main.7dc54ab4.js.map",
-    "209.ea889622.chunk.js.map": "/react-shop/static/js/209.ea889622.chunk.js.map"
+    "main.98775ada.css.map": "/react-shop/static/css/main.98775ada.css.map",
+    "main.522f80d9.js.map": "/react-shop/static/js/main.522f80d9.js.map",
+    "209.1522a294.chunk.js.map": "/react-shop/static/js/209.1522a294.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b66f3a8.css",
-    "static/js/main.7dc54ab4.js"
+    "static/css/main.98775ada.css",
+    "static/js/main.522f80d9.js"
   ]
 }
